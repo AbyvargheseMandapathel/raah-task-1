@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+  <!-- MDB -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" referrerpolicy="no-referrer" />
+  <title>Aby Varghese - Portfolio</title>
+  <style>
+    .footer-icon {
+      transition: transform 0.5s ease;
+    }
+
+    .footer-icon:hover {
+      transform: scale(1.2);
+    }
+
+    main {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  height: 80vh;
+  overflow-y: auto; 
+}
+
+
+    .language-card {
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+
+    .language-card .card {
+      background-color: #000; /* Set card background color to black */
+      border: none; /* Remove card border */
+    }
+
+    .language-card .card-title {
+      color: #68e0cf; /* Set card title text color */
+    }
+
+    .footer {
+      padding: 20px; /* Add padding to the footer */
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <main class="bg-black d-flex flex-column align-items-center min-vh-100">
+    <h2 class="text-center mb-4 mt-4">Programming Languages</h2>
+
+    <!-- Language Cards Container -->
+    <div class="container align-items-center">
+      <div class="row" id="languageCardsRow"></div>
+    </div>
+  </main>
+
+  <footer class="text-center bg-black fixed-bottom"> <!-- Adjust pb-4 for padding -->
+    <div class="container p-4 d-flex flex-column align-items-center">
+      <section class="mb-4">
+        <a data-mdb-ripple-init class="btn text-white btn-floating m-1 footer-icon" style="background-color: #3b5998;" href="#!" role="button">
+          <i class="fa-solid fa-house"></i>
+        </a>
+
+        <a data-mdb-ripple-init class="btn text-white btn-floating m-1 footer-icon" style="background-color: #55acee;" href="projects.html" role="button">
+          <i class="fa-solid fa-briefcase"></i>
+        </a>
+
+        <a data-mdb-ripple-init class="btn text-white btn-floating m-1 footer-icon" style="background-color: #dd4b39;" href="#!" role="button">
+          <i class="fa-solid fa-code"></i>
+        </a>
+
+        <a data-mdb-ripple-init class="btn text-white btn-floating m-1 footer-icon" style="background-color: #ac2bac;" href="#!" role="button">
+          <i class="fa-solid fa-phone"></i>
+        </a>
+      </section>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
+
+  <script>
+    const languages = ['JavaScript', 'Python', 'Java', 'C++', 'C#', 'TypeScript', 'Ruby', 'Swift', 'Go', 'Kotlin'];
+  
+    // Function to create a language card
+    function createLanguageCard(language) {
+      const card = document.createElement("div");
+      card.className = "col-md-4 language-card animate__animated animate__fadeInUp";
+  
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title ${window.innerWidth <= 768 ? 'text-center' : ''}">${language}</h5>
+          </div>
+        </div>
+      `;
+  
+      return card;
+    }
+  
+    // Function to initialize language cards
+    function initializeLanguageCards() {
+      const languageCardsRow = document.getElementById("languageCardsRow");
+  
+      languages.forEach(language => {
+        const card = createLanguageCard(language);
+        languageCardsRow.appendChild(card);
+      });
+    }
+  
+    // Initialize language cards on page load
+    initializeLanguageCards();
+  </script>
+  
+</body>
+</html>
