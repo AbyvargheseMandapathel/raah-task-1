@@ -1,0 +1,19 @@
+    span:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+
+    .display-3:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+
+    .footer-icon {
+      transition: transform 0.5s ease;
+    }
+
+    .footer-icon:hover {
+      transform: scale(1.2);
+    }
+
+    
