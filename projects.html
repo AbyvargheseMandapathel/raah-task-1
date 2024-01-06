@@ -20,74 +20,11 @@
     
     <!-- Example Cards -->
     <div class="container">
-      <div class="row">
-        <!-- Card 1 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Project Title</h5>
-                <p class="card-text">Description of the project.</p>
-                <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-primary mb-2 mb-md-0">Live Link</a>
-                  <a href="#" class="btn btn-secondary mb-2 mb-md-0">GitHub</a>
-                  <a href="#" class="btn btn-info mb-2 mb-md-0" data-toggle="modal" data-target="#projectDetailsModal">View More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <!-- Card 2 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Project Title</h5>
-                <p class="card-text">Description of the project.</p>
-                <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-primary mb-2 mb-md-0">Live Link</a>
-                  <a href="#" class="btn btn-secondary mb-2 mb-md-0">GitHub</a>
-                  <a href="#" class="btn btn-info mb-2 mb-md-0" data-toggle="modal" data-target="#projectDetailsModal">View More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <!-- Card 3 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Project Title</h5>
-                <p class="card-text">Description of the project.</p>
-                <div class="d-flex justify-content-between">
-                  <a href="#" class="btn btn-primary mb-2 mb-md-0">Live Link</a>
-                  <a href="#" class="btn btn-secondary mb-2 mb-md-0">GitHub</a>
-                  <a href="#" class="btn btn-info mb-2 mb-md-0" data-toggle="modal" data-target="#projectDetailsModal">View More</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        <!-- Card 4 -->
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Project Title</h5>
-              <p class="card-text">Description of the project.</p>
-              <div class="d-flex justify-content-between">
-                <a href="#" class="btn btn-primary mb-2 mb-md-0">Live Link</a>
-                <a href="#" class="btn btn-secondary mb-2 mb-md-0">GitHub</a>
-                <a href="#" class="btn btn-info mb-2 mb-md-0" data-toggle="modal" data-target="#projectDetailsModal">View More</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Repeat Cards as Needed -->
-
-      </div>
+      <div class="row" id="projectCardsRow"></div>
     </div>
   </main>
 
-  <!-- Modal -->
+  <!-- Shared Modal -->
   <div class="modal fade" id="projectDetailsModal" tabindex="-1" role="dialog" aria-labelledby="projectDetailsModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -97,9 +34,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          <!-- Add your detailed project information here -->
-          <p>Details of the project go here...</p>
+        <div class="modal-body" id="projectDetailsModalBody">
+          <!-- Project details will be dynamically inserted here -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -135,5 +71,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+
+  <script>
+    // Sample project data (replace this with your actual project data)
+    const projects = [
+      { title: "Project 1", description: "Description of Project 1", liveLink: "#", githubLink: "#" },
+      { title: "Project 2", description: "Description of Project 2", liveLink: "#", githubLink: "#" },
+      { title: "Project 3", description: "Description of Project 3", liveLink: "#", githubLink: "#" },
+      { title: "Project 4", description: "Description of Project 4", liveLink: "#", githubLink: "#" },
+    ];
+
+    // Function to create a card
+    function createProjectCard(project) {
+      const card = document.createElement("div");
+      card.className = "col-md-4 mb-4";
+
+      card.innerHTML = `
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${project.title}</h5>
+            <p class="card-text">${project.description}</p>
+            <div class="d-flex justify-content-between">
+              <a href="${project.liveLink}" class="btn btn-primary mb-2 mb-md-0">Live Link</a>
+              <a href="${project.githubLink}" class="btn btn-secondary mb-2 mb-md-0">GitHub</a>
+              <a href="#" class="btn btn-info mb-2 mb-md-0" data-toggle="modal" data-target="#projectDetailsModal" onclick="showProjectDetails('${project.title}', '${project.description}')">View More</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    // Function to create and show project details in the modal
+    function showProjectDetails(title, description) {
+      const modalBody = document.getElementById("projectDetailsModalBody");
+      modalBody.innerHTML = `<p><strong>${title}</strong></p><p>${description}</p>`;
+    }
+
+    // Function to initialize project cards
+    function initializeProjectCards() {
+      const projectCardsRow = document.getElementById("projectCardsRow");
+
+      projects.forEach(project => {
+        const card = createProjectCard(project);
+        projectCardsRow.appendChild(card);
+      });
+    }
+
+    // Initialize project cards on page load
+    initializeProjectCards();
+  </script>
 </body>
 </html>
