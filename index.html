@@ -13,6 +13,15 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" referrerpolicy="no-referrer" />
   <title>Aby Varghese - Portfolio</title>
+  <style>
+    .footer-icon {
+      transition: transform 0.5s ease;
+    }
+
+    .footer-icon:hover {
+      transform: scale(1.2);
+    }
+  </style>
 </head>
 <body>
 
@@ -35,6 +44,19 @@
           <span style="color: #55acee;">E</span>
         </h1>
         <p class="lead">Software Engineer</p>
+
+        <!-- GitHub and LinkedIn Icons with Magnifier Animation -->
+        <div class="d-flex justify-content-center">
+          <!-- GitHub Icon -->
+          <a href="https://github.com/AbyvargheseMandapathel" target="_blank" class="text-white footer-icon animate__animated animate__zoomIn">
+            <i class="fab fa-github fa-2x mx-3"></i>
+          </a>
+
+          <!-- LinkedIn Icon -->
+          <a href="https://www.linkedin.com/in/aby-varghese-mandapathel/" target="_blank" class="text-white footer-icon animate__animated animate__zoomIn">
+            <i class="fab fa-linkedin-in fa-2x mx-3"></i>
+          </a>
+        </div>
       </div>
     </div>
   </main>
@@ -46,7 +68,7 @@
           <i class="fa-solid fa-house"></i>
         </a>
 
-        <a data-mdb-ripple-init class="btn text-white btn-floating m-1 footer-icon" style="background-color: #55acee;" href="#!" role="button">
+        <a data-mdb-ripple-init class="btn text-white btn-floating m-1 footer-icon" style="background-color: #55acee;" href="projects.html" role="button">
           <i class="fa-solid fa-briefcase"></i>
         </a>
 
@@ -62,5 +84,7 @@
   </footer>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.js"></script>
 </body>
 </html>
